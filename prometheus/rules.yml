@@ -1,0 +1,49 @@
+groups:
+  - name: server_is_down
+    rules:
+      - alert: server_is_down
+        expr: up == 0
+        for: 1m
+        labels:
+          severity: page
+        annotations:
+          summary: "Server is down"
+          description: "Server status on instance {{ $labels.instance }} is down."
+  - name: CPU.Alert.rules
+    rules:
+      - alert: HighCpuUsage
+        expr: 100 - (avg by (instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High CPU Usage Detected"
+          description: "CPU usage on instance {{ $labels.instance }} is above 80% for more than 1 minutes."
+  - name: memory_usage_percent
+    rules:
+      - record: memory_usage_percent
+        expr: 100 -(node_memory_MemTotal_bytes/node_memory_MemFree_bytes)
+
+  - name: Memory.Alert.rules
+    rules:
+    - alert: HighMemoryUsage
+      expr: |
+          memory_usage_percent > 80
+      for: 1m
+      labels:
+        severity: warning
+      annotations:
+        summary: "High memory usage detected on {{ $labels.instance }}"
+        description: "Memory usage is {{ $value }}%, which is above 80%."
+
+
+#  - name: test_rules
+#    rules:
+#      - alert: TestAlert
+#        expr: vector(1)  # This will always be true and trigger the alert
+#        for: 1m
+#        labels:
+#          severity: critical
+#        annotations:
+#          summary: "Test Alert"
+#          description: "This is a test alert for vector receive from Alertmanager."

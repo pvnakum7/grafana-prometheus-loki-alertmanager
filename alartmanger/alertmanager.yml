@@ -1,0 +1,26 @@
+global:
+  resolve_timeout: 1m
+  smtp_smarthost: 'email-smtp.us-east-1.amazonaws.com:587'
+  smtp_from: 'pvnakum7@gmail.com'
+  smtp_auth_username: 'AKIATCKANMAYNDMATULU'
+  smtp_auth_password: 'BOs8pJNEckHC7Ko/bStB2pcxROyvug6OyeKsjHFcEuOQ'
+  smtp_require_tls: true
+
+route:
+  group_by: ['alertname', 'cluster','prometheus']
+  group_wait: 10s
+  group_interval: 1m
+  repeat_interval: 1m
+  receiver: 'email-me'
+
+receivers:
+- name: 'email-me'
+  email_configs:
+   - to: pvnakum7@gmail.com, alokpatel.au@gmail.com
+     send_resolved: true
+#   - to:
+#     - pvnakum7@gmail.com
+#     - alokpatel.au@gmail.com
+#     send_resolved: true
+#  - to: ['pvnakum7@gmail.com','alokpatel.au@gmail.com']
+#  - to: 'alokpatel.au@gmail.com'

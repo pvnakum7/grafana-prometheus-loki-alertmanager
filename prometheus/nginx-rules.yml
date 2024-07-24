@@ -1,0 +1,21 @@
+groups:
+  - name: nginx_logs
+    rules:
+      - alert: NginxErrorLogs
+        expr: sum(rate(loki_query_result{job="nginx"} |= "error" [1m])) by (job) > 0 
+#       expr: sum(rate({job="nginx"} |= "error" [1m])) by (job) > 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Nginx error logs detected"
+          description: "Nginx has logged errors in the last minute."
+
+      - alert: NginxWarningLogs
+        expr: sum(rate({job="nginx"} |= "warn" [1m])) by (job) > 0
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Nginx warning logs detected"
+          description: "Nginx has logged warnings in the last minute."
