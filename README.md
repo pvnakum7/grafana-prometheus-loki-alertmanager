@@ -44,7 +44,7 @@ and AlertManager is used to send alerts of various types of log levels (error, w
 
 
 ### In development or application instance:
-Promtail:
+# Promtail:
         curl -i privateip:9080
     or :
         curl -i http:://localhost:9080/metrics
