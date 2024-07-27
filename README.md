@@ -5,7 +5,7 @@ and AlertManager is used to send alerts of various types of log levels (error, w
 
 # Every application running on which port and server details:
 ## In Monitoring instance 
-Grafana:
+# Grafana:
         curl -i public-ip:3000
         curl -i privateip:3000
         curl -i 10.0.5.192:3000
@@ -16,14 +16,14 @@ Grafana:
         https://your-monitoring-domain.com/api/health
 
 
-Prometheus:
+# Prometheus:
         curl -i privateip:9090
         curl -i http://localhost:9090/metrics
         curl -i http://localhost:9090/-/healthy
     or :
          curl -i 10.0.5.192:9090
 
-Loki:
+# Loki:
         curl -i privateip:3100
     or : 
         curl -i http:://localhost:3100/metrics
@@ -31,7 +31,7 @@ Loki:
     or : 
         curl -i 10.0.5.192:3100
 
-Alertmaneger:
+# Alertmaneger:
 
         curl -i privateip:9093
     or :
@@ -52,7 +52,7 @@ Promtail:
     or :
         curl -i 10.0.46.189:9080
 
-node_exporter:
+# node_exporter:
         curl -i privateip:9100
     or :
         curl -i http:://localhost:9100/metrics
