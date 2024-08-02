@@ -1,9 +1,9 @@
 global:
   resolve_timeout: 1m
   smtp_smarthost: 'email-smtp.us-east-1.amazonaws.com:587'
-  smtp_from: 'pvnakum7@gmail.com'
-  smtp_auth_username: 'AKIATCKANMAYNDMATULU'
-  smtp_auth_password: 'BOs8pJNEckHC7Ko/bStB2pcxROyvug6OyeKsjHFcEuOQ'
+  smtp_from: 'abcdpv@gmail.com'
+  smtp_auth_username: 'SMTP-sdID'
+  smtp_auth_password: 'yorSMTPkeyQ'
   smtp_require_tls: true
 
 route:
@@ -16,11 +16,5 @@ route:
 receivers:
 - name: 'email-me'
   email_configs:
-   - to: pvnakum7@gmail.com, alokpatel.au@gmail.com
+   - to: abcdpvnakum7@gmail.com, abcdpre@gmail.com
      send_resolved: true
-#   - to:
-#     - pvnakum7@gmail.com
-#     - alokpatel.au@gmail.com
-#     send_resolved: true
-#  - to: ['pvnakum7@gmail.com','alokpatel.au@gmail.com']
-#  - to: 'alokpatel.au@gmail.com'
