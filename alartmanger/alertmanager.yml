@@ -1,0 +1,20 @@
+global:
+  resolve_timeout: 1m
+  smtp_smarthost: 'email-smtp.us-east-1.amazonaws.com:587'
+  smtp_from: 'abcdpv@gmail.com'
+  smtp_auth_username: 'SMTP-sdID'
+  smtp_auth_password: 'yorSMTPkeyQ'
+  smtp_require_tls: true
+
+route:
+  group_by: ['alertname', 'cluster','prometheus']
+  group_wait: 10s
+  group_interval: 1m
+  repeat_interval: 1m
+  receiver: 'email-me'
+
+receivers:
+- name: 'email-me'
+  email_configs:
+   - to: abcdpvnakum7@gmail.com, abcdpre@gmail.com
+     send_resolved: true
